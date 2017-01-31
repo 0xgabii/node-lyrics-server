@@ -3,6 +3,16 @@ var alsong = require('alsong');
 
 var app = express();
 
+//cors filter
+app.use(function (request, response, next) {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  response.setHeader('Access-Control-Max-Age', '3600');
+  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  response.setHeader('Access-Control-Allow-Credentials', true);
+  next();
+});
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -13,16 +23,6 @@ app.set('view engine', 'ejs');
 
 app.get('/', function (request, response) {
   response.render('pages/index');
-});
-
-//cors filter
-app.use(function (request, response, next) {
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  response.setHeader('Access-Control-Allow-Credentials', true);
-
-  next();
 });
 
 //get lyrics by artist && title
