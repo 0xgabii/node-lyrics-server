@@ -1,5 +1,4 @@
-# alsong-lyrics node-js server [https://young-savannah-79010.herokuapp.com](https://young-savannah-79010.herokuapp.com)
-
+# alsong-lyrics node-js server
 made for personal project [visualizer](https://github.com/gomonk3037/Visualizer)
 
 ## used
