@@ -1,6 +1,5 @@
 var express = require('express');
-var alsong = require('alsong');
-
+var lyrics = require("lyric-get");
 var app = express();
 
 //cors filter
@@ -27,18 +26,10 @@ app.get('/', function (request, response) {
 
 //get lyrics by artist && title
 app.get('/lyrics/:artist/:title', function (request, response) {
-  alsong(request.params.artist, request.params.title).then((lyrics) => {
-    lyrics ? response.send(200, lyrics) : response.send(404)
+  lyrics.get(request.params.artist, request.params.title, (err, res) => {
+    !err || res != 'not found' ? response.send(200, res) : response.send(404)
   });
 });
-
-//get lyrics by file
-app.post('/lyrics/:file', function (request, response) {
-  alsong(request.params.file).then((lyrics) => {
-    lyrics ? response.send(200, lyrics) : response.send(404)
-  });
-});
-
 
 app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'));

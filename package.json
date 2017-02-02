@@ -10,9 +10,9 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "alsong": "^1.0.1",
     "ejs": "2.4.1",
     "express": "4.13.3",
+    "lyric-get": "^1.0.3",
     "request": "^2.79.0"
   },
   "repository": {
